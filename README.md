@@ -13,9 +13,19 @@ an Azure Ubuntu Data Science Virtual Machine (DSVM).
 First, use the Azure Storage Explorer to create a SAS (shared access signature) key
 to be used to access the Blob Container from H2O per the following screen-shots:
 
-- ![image 1](img/Azure-Storage-Explorer-1.png "Azure Storage Explorer - ")
-- ![image 2](img/Azure-Storage-Explorer-2.png "Azure Storage Explorer - ")
-- ![image 3](img/Azure-Storage-Explorer-3.png "Azure Storage Explorer - ")
+Open Storage Explorer and select your container.  Then right-mouse it, and
+select "Get Shared Access Signature...".
+
+![image 1](img/Azure-Storage-Explorer-1.png "")
+
+Specify the timespan of the SAS key; I gave this one a 1-year expiration:
+
+- ![image 2](img/Azure-Storage-Explorer-2.png "")
+
+Capture both the value of the URL and the Query String.  The **STORAGE_URL_QUERY_STR**
+environment variable on the DSVM needs to be set to the value of the query string.
+
+- ![image 3](img/Azure-Storage-Explorer-3.png "")
 
 # Running the Python 3 script on the DSVM
 
