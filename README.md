@@ -1,13 +1,13 @@
 # azure-blob-h2o
 
-Example of how to access Azure Blob Storage from  a H2O Python script running on
+Example of how to access Azure Blob Storage from a H2O Python script running on
 an Azure Ubuntu Data Science Virtual Machine (DSVM).
 
 # Azure Storage Explorer
 
 ## Links
 
-- https://azure.microsoft.com/en-us/features/storage-explorer/
+- https://azure.microsoft.com/en-us/features/storage-explorer/  (Azure Storage Explorer installation)
 - https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1
 
 First, use the Azure Storage Explorer to create a SAS (shared access signature) key
@@ -18,23 +18,23 @@ select "Get Shared Access Signature...".
 
 ![image 1](img/Azure-Storage-Explorer-1.png "")
 
-Specify the timespan of the SAS key; I gave this one a 1-year expiration:
+Specify the timespan of the SAS key; I gave this one a 1-year expiration.  Click 'Create'.
 
 - ![image 2](img/Azure-Storage-Explorer-2.png "")
 
-Capture both the value of the URL and the Query String.  The **STORAGE_URL_QUERY_STR**
+Click 'Copy' to capture each value - the URL and the Query String.  The **STORAGE_URL_QUERY_STR**
 environment variable on the DSVM needs to be set to the value of the query string.
 
 - ![image 3](img/Azure-Storage-Explorer-3.png "")
 
 # Running the Python 3 script on the DSVM
 
-**h2o_example.py** does two things:
-- Loads the standard iris dataset from a URL
-- Loads the exect same iris dataset from Azure Blob Storage using the SAS key
+**h2o_example.py** does three things:
+- Loads the standard iris dataset from a URL via 'h2o.import_file'
+- Loads the exect same iris dataset from Azure Blob Storage, via 'h2o.import_file'
 - "describes" each dataframe to validate their sameness
 
-Since th **h2o** library is already installed in the DSVM you don't need to
+Since the **h2o** library is already installed in the DSVM you don't need to
 install it yourself via conda or pip.
 
 For this example script, set environment variable **STORAGE_URL_QUERY_STR** to be the value
@@ -44,6 +44,7 @@ Program execution and output is shown below:
 
 ```
 cjoakim@cjoakimdsvm:~/github/azure-hcm$ python h2o_example.py
+
 Checking whether there is an H2O instance running at http://localhost:54321..... not found.
 Attempting to start a local H2O server...
   Java Version: openjdk version "1.8.0_151"; OpenJDK Runtime Environment (build 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12); OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)
