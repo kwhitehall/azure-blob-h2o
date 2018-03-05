@@ -31,7 +31,7 @@ environment variable on the DSVM needs to be set to the value of the query strin
 
 **h2o_example.py** does three things:
 - Loads the standard iris dataset from a URL via 'h2o.import_file'
-- Loads the exect same iris dataset from Azure Blob Storage, via 'h2o.import_file'
+- Loads the exact same iris dataset from Azure Blob Storage, via 'h2o.import_file'
 - "describes" each dataframe to validate their sameness
 
 Since the **h2o** library is already installed in the DSVM you don't need to
